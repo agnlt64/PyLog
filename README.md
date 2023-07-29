@@ -13,7 +13,7 @@ You do not need to install PyLog, you can just copy and paste the `logger.py` fi
 __NOTE THAT `enable_file_logging` and `disable_file_logging` can be called anywhere in the program and you can therefore have logs saved to a file and logs only printed to the console.__  
 `clean_logs()`: remove the `logs.txt` file if it exists.  
 
-Internal methods are not documented here because you should call them directly, but you can look at the code to understand what they do.
+Internal methods are not documented here because you should not call them directly, but you can look at the code to understand what they do.
 
 ## Usage
 ```py
