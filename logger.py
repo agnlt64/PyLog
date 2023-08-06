@@ -68,17 +68,28 @@ class Logger:
         return 'info'
 
 
+    def __global_time_format(self, time: str) -> str:
+        if int(time) < 10:
+            time = '0' + time
+        return time
+
     def __format_date(self) -> str:
         """
         Returns the date using `dd/mm/yyyy` format.
         """
-        day = str(self._date.day)
-        month = str(self._date.month)
-        if int(day) < 10:
-            day = '0' + day
-        if int(month) < 10:
-            month = '0' + month
+        day = self.__global_time_format(str(self._date.day))
+        month = self.__global_time_format(str(self._date.month))
         return f'{day}/{month}/{self._date.year}'
+    
+
+    def __format_hour(self) -> str:
+        """
+        Returns the current hour using `hour:minute:second`.
+        """
+        hour = self.__global_time_format(str(self._date.hour))
+        minute = self.__global_time_format(str(self._date.minute))
+        second = self.__global_time_format(str(self._date.second))
+        return f'{hour}:{minute}:{second}'
 
 
     def __strip_format(self, input_string: str) -> str:
@@ -91,9 +102,9 @@ class Logger:
 
     def __get_format(self, color: str, log_level: LogLevel) -> str:
         """
-        Default string format for the logger, aka `(bold + color)[date] severity:(no bold + color)`.
+        Default string format for the logger, aka `(bold + color)[date at hour] severity:(no bold + color)`.
         """
-        return f'{color}{self.BOLD}[{self.__format_date()}] {self.__log_level_to_string(log_level).upper()}:{self.RESET}{color}'
+        return f'{color}{self.BOLD}[{self.__format_date()} at {self.__format_hour()}] {self.__log_level_to_string(log_level).upper()}:{self.RESET}{color}'
 
 
     def __write_to_file(self, format: str) -> None:
