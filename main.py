@@ -23,3 +23,6 @@ if __name__ == '__main__':
     logger.log('hello world') # saved to logs.txt even if it has been deleted
     logger.disable_file_logging()
     logger.log('not saved to a file')
+    
+    logger.log_assert(1 == 1, 'maths are not broken')
+    logger.log_assert(1 == 2, 'maths are broken')

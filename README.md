@@ -10,7 +10,8 @@ You do not need to install PyLog, you can just copy and paste the `logger.py` fi
 `info(format: str)`: print the `format` in blue using `self.__get_format()` as a default formatter.  
 `warning(format: str)`: print the `format` in yellow using `self.__get_format()` as a default formatter.  
 `error(format: str)`: print the `format` in red using `self.__get_format()` as a default formatter.  
-`set_level(log_level: LogLevel)`: set the logger log level to `log_level`. Raise a `ValueError` if the `log_level` is incorrect.  
+`set_level(log_level: LogLevel)`: set the logger log level to `log_level`. Raises a `ValueError` if the `log_level` is incorrect.  
+`log_assert(condition: bool, message='')`: custom assert method. Raises an `AssertionError` if the `condition` is `False` and prints the `message` in bold red.  
 `enable_file_logging()`: enable file logging if it was not already enabled.  
 `disable_file_logging()`: disable file logging if it was not already disabled.  
 __NOTE THAT `enable_file_logging` and `disable_file_logging` can be called anywhere in the program and you can therefore have logs saved to a file and logs only printed to the console.__  

@@ -171,6 +171,13 @@ class Logger:
         print(self.RESET)
 
 
+    def log_assert(self, condition: bool, message='') -> AssertionError | None:
+        """
+        Custom assertion method.
+        """
+        if not condition:
+            raise AssertionError(f'{self.RED}{self.BOLD}{message}{self.RESET}')
+
     def set_level(self, log_level: LogLevel) -> None | ValueError:
         """
         Sets the current log level. An ValueError is raised if the log level provided is incorrect.
