@@ -176,7 +176,8 @@ class Logger:
         Custom assertion method.
         """
         if not condition:
-            raise AssertionError(f'{self.RED}{self.BOLD}{message}{self.RESET}')
+            print(self.RED + self.BOLD)
+            raise AssertionError(f'{self.RESET}{self.RED}{message}{self.RESET}')
 
     def set_level(self, log_level: LogLevel) -> None | ValueError:
         """
