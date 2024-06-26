@@ -26,6 +26,7 @@ from enum import Enum
 from datetime import datetime
 import os
 import re
+import sys
 
 
 class LogLevel(Enum):
@@ -136,8 +137,8 @@ class Logger:
         """
         if self._log_to_file:
             self.__write_to_file(format)
-        print(f'{self.__get_format(self.BLUE, LogLevel.Info)} {format}')
-        print(self.RESET)
+        sys.stdout.write(f'{self.__get_format(self.BLUE, LogLevel.Info)} {format}')
+        sys.stdout.write(self.RESET)
 
 
     def warning(self, format: str) -> None:
@@ -146,8 +147,8 @@ class Logger:
         """
         if self._log_to_file:
             self.__write_to_file(format)
-        print(f'{self.__get_format(self.YELLOW, LogLevel.Warning)} {format}')
-        print(self.RESET)
+        sys.stdout.write(f'{self.__get_format(self.YELLOW, LogLevel.Warning)} {format}')
+        sys.stdout.write(self.RESET)
 
 
     def error(self, format: str) -> None:
@@ -156,8 +157,8 @@ class Logger:
         """
         if self._log_to_file:
             self.__write_to_file(format)
-        print(f'{self.__get_format(self.RED, LogLevel.Error)} {format}')
-        print(self.RESET)
+        sys.stderr.write(f'{self.__get_format(self.RED, LogLevel.Error)} {format}')
+        sys.stderr.write(self.RESET)
 
 
     def set_level(self, log_level: LogLevel) -> None | ValueError:
