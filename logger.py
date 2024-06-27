@@ -52,14 +52,12 @@ class Logger:
     # Private methods
     ######################
 
-    def __log_level_to_string(self, log_level: LogLevel=None) -> str:
+    def __log_level_to_string(self, log_level: LogLevel) -> str:
         """
         Returns the stringified version of the log level parameter if it is not None,
         else returns the stringified versoin of the current log level.
         """
-        if log_level is None: level = self.log_level
-        else: level = log_level
-        match level:
+        match log_level:
             case LogLevel.Info:
                 return 'info'
             case LogLevel.Warning:
@@ -161,7 +159,7 @@ class Logger:
         sys.stderr.write(self.RESET)
 
 
-    def set_level(self, log_level: LogLevel) -> None | ValueError:
+    def set_level(self, log_level: LogLevel) -> None:
         """
         Sets the current log level. An ValueError is raised if the log level provided is incorrect.
         """
